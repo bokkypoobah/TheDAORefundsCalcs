@@ -1,4 +1,4 @@
-# TheDAOETCRefunds
+# TheDAO Refund Calcs
 
 Some calculations relating to The DAO ETC refunds
 
