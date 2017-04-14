@@ -19,14 +19,16 @@ var skipBlocks = 4 * 60 * 4; // 4 hours
 var startBlockNumber = 1920000;
 // var endBlockNumber = parseInt(startBlockNumber) + skipBlocks * 2000; 
 var endBlockNumber = eth.blockNumber;
-var refundContractAddress = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
+var refundContractAddress = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754";
+var extraBalanceRefundContractAddress = "0x755cdba6AE4F479f7164792B318b2a06c759833B";
 
 console.log("RESULT: Checking balance from " + startBlockNumber + " to " + endBlockNumber);
 
 for (var i = startBlockNumber; i < endBlockNumber; i += skipBlocks) {
   var balance = eth.getBalance(refundContractAddress, i);
+  var extraBalance = eth.getBalance(extraBalanceRefundContractAddress, i);
   var timestamp = eth.getBlock(i).timestamp;
-  console.log("RESULT: " + i + "\t" + timestamp + "\t" + web3.fromWei(balance, "ether"));
+  console.log("RESULT: " + i + "\t" + timestamp + "\t" + web3.fromWei(balance, "ether") + "\t" + web3.fromWei(extraBalance, "ether"));
 }
 
 EOF
